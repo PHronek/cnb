@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name        = 'cnb'
   s.version     = CNB::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Jan Zikán']
-  s.email       = ['zikan@uol.cz']
+  s.authors     = ['Jan Zikán', 'Pavel Hronek']
+  s.email       = ['zikan@uol.cz', 'hronek@uol.cz']
   s.summary     = 'CNB currency rates'
   s.description = 'Get daily and monthly currency rates from Czech National Bank'
   s.homepage    = 'http://www.uol.cz'
@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n") - Dir["images/*"]
   s.test_files = `git ls-files -- spec/**/*`.split("\n")
 
-  s.require_paths = ['lib', 'config']
+  s.require_paths = ['lib']
 
-  s.add_dependency('nokogiri', '~> 1.6')
-  s.add_development_dependency('rake', '~> 10.4')
-  s.add_development_dependency('rspec', '~> 2.14')
-  s.add_development_dependency('simplecov', '~> 0.8')
-  s.add_development_dependency('codeclimate-test-reporter')
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'timecop'
+  s.add_development_dependency 'webmock'
+  s.add_development_dependency 'pry'
 end
