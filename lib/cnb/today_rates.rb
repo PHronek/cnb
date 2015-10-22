@@ -9,6 +9,8 @@ module CNB
     def exchange_rate_for(currency, date)
       @currencies = get_currencies(date)
 
+      return nil if cached_date < date
+
       currencies[currency][:rate].to_f
     end
 

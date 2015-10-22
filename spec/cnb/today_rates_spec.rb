@@ -8,6 +8,9 @@ RSpec.describe CNB::TodayRates do
       stub_request(:get, (CNB::TODAY_RATES_URL + "19.10.2015")).
         to_return(status: 200, body: load_today_fixture)
 
+      stub_request(:get, (CNB::TODAY_RATES_URL + "20.10.2015")).
+        to_return(status: 200, body: load_today_fixture)
+
       Timecop.freeze('2015-10-19')
     end
 
@@ -21,6 +24,10 @@ RSpec.describe CNB::TodayRates do
       it 'returns exchange rate' do
         expect(today_rates.exchange_rate_for('JPY', Date.today)).to eq(0.20019)
       end
+    end
+
+    it 'returns nil if exchange rates are old' do
+      expect(today_rates.exchange_rate_for('JPY', Date.today + 1)).to eq(nil)
     end
   end
 
